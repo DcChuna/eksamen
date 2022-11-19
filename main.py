@@ -53,3 +53,21 @@ def catalog(action):
                      cur.execute(f'UPDATE productss SET number = "{n5}" WHERE rowid = "{n6}"')
                      connection.commit()
 
+button = Button(text='1', font='Arial 15', fg='white', bg='#a6a6a6', relief=FLAT, width=2, height=2,command=lambda:catalog('1'))
+button.grid(row=2, column=1)
+button = Button(text='2', font='Arial 15', fg='white', bg='#a6a6a6', relief=FLAT, width=2, height=2,command=lambda:catalog('2'))
+button.grid(row=2, column=2)
+button = Button(text='3', font='Arial 15', fg='white', bg='#a6a6a6', relief=FLAT, width=2, height=2,command=lambda:catalog('3'))
+button.grid(row=1, column=1)
+button = Button(text='4', font='Arial 15', fg='white', bg='#a6a6a6', relief=FLAT, width=2, height=2,command=lambda:catalog('4'))
+button.grid(row=1, column=2)
+
+cur.execute(f'SELECT "rowid =",rowid,"name =" , name,"price =", price,"number =", number FROM productss')
+connection.commit()
+res = cur.fetchall()
+
+
+label = Label(text =res, font='Arial 10', fg='White', bg='#3b3b3b')
+label.grid(columnspan = 3)
+
+window.mainloop()
